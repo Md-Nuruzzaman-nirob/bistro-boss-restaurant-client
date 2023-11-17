@@ -9,10 +9,9 @@ const Button = ({ children, className }) => {
     </div>
   );
 };
-
 Button.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string.isRequired,
+  children: PropTypes.node,
+  className: PropTypes.string,
 };
 
 export default Button;
