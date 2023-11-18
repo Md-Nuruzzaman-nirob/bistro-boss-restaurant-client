@@ -14,7 +14,6 @@ import { FaQuoteLeft } from "react-icons/fa";
 
 const TestimonialSection = () => {
   const { data, loader } = useFetch(`/api/v1/review`);
-  console.log(data);
 
   if (loader) {
     return (

@@ -7,6 +7,7 @@ const Container = ({ children, className }) => {
     </div>
   );
 };
+
 Container.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,

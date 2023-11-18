@@ -1,8 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import Container from "../shared/Container";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
+  const { user, logout } = useAuth();
   const navLink = (
     <>
       <NavLink
@@ -38,12 +40,16 @@ const Navbar = () => {
         Contact
       </NavLink>
       <NavLink
-        to="/cart"
+        to="/user-dashboard"
         className={({ isActive, isPending }) =>
-          isPending ? "pending" : isActive ? "text-[#BB8506] underline" : ""
+          isPending
+            ? "pending"
+            : isActive
+            ? "text-[#BB8506] flex items-center btn btn-sm border-none"
+            : "flex items-center btn btn-sm border-none"
         }
       >
-        Cart
+        Cart <span className="badge badge-sm badge-secondary">+0</span>
       </NavLink>
     </>
   );
@@ -60,16 +66,25 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="hidden lg:flex">
-          <ul className="menu menu-horizontal gap-6 text-lg font-light underline-offset-[6px] tracking-widest">
+          <ul className="menu menu-horizontal gap-6 text-lg font-light underline-offset-[6px] tracking-widest items-center">
             {navLink}
           </ul>
         </div>
         <div className="flex items-center gap-5 lg:gap-0">
-          <Link to={"/login"}>
-            <button className="px-5 btn btn-xs lg:btn-sm bg-[#BB8506] hover:bg-white  text-white hover:text-[#BB8506] border-0 border-b-4 border-white hover:border-[#BB8506] rounded-lg transition-colors duration-500 ease-in-out font-light outline-none">
-              Login
+          {user?.email ? (
+            <button
+              onClick={() => logout()}
+              className="px-5 btn btn-xs lg:btn-sm bg-[#BB8506] hover:bg-white  text-white hover:text-[#BB8506] border-0 border-b-4 border-white hover:border-[#BB8506] rounded-lg transition-colors duration-500 ease-in-out font-light outline-none"
+            >
+              Log Out
             </button>
-          </Link>
+          ) : (
+            <Link to={"/login"}>
+              <button className="px-5 btn btn-xs lg:btn-sm bg-[#BB8506] hover:bg-white  text-white hover:text-[#BB8506] border-0 border-b-4 border-white hover:border-[#BB8506] rounded-lg transition-colors duration-500 ease-in-out font-light outline-none">
+                Login
+              </button>
+            </Link>
+          )}
           <div className="dropdown">
             <label tabIndex={0} className=" lg:hidden">
               <svg
@@ -89,7 +104,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-5 shadow rounded-box w-52 bg-gray-800 space-y-5 text-lg right-0"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-5 shadow rounded-box w-52 bg-gray-800 space-y-5 text-lg right-0 items-center"
             >
               {navLink}
             </ul>

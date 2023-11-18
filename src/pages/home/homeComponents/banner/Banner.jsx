@@ -12,7 +12,7 @@ import "./banner.css";
 const Banner = () => {
   return (
     <Container>
-      <Carousel>
+      <Carousel className="text-center">
         <div>
           <img src={banner1} />
         </div>
