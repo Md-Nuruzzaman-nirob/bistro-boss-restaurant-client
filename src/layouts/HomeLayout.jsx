@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "../components/common/Navbar";
-import Footer from "../components/common/Footer";
+import Navbar from "../components/homeComponents/Navbar";
+import Footer from "../components/homeComponents/Footer";
 import useAuth from "../hooks/useAuth";
 import { RotatingLines } from "react-loader-spinner";
 

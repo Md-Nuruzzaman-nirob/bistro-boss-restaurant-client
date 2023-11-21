@@ -8,6 +8,7 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { useForm } from "react-hook-form";
+import SocialLogin from "./SocialLogin";
 
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
@@ -121,6 +122,7 @@ const Login = () => {
                 </Link>
               </p>
             </div>
+            <SocialLogin />
           </form>
         </div>
       </div>

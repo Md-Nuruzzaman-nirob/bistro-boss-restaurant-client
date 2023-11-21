@@ -8,6 +8,7 @@ import {
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
+import SocialLogin from "./SocialLogin";
 
 const Register = () => {
   const [disabled, setDisabled] = useState(true);
@@ -144,6 +145,7 @@ const Register = () => {
                 </Link>
               </p>
             </div>
+            <SocialLogin />
           </form>
         </div>
       </div>

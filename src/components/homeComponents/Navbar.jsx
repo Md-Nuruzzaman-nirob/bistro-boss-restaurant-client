@@ -40,7 +40,7 @@ const Navbar = () => {
         Contact
       </NavLink>
       <NavLink
-        to="/user-dashboard"
+        to="/dashboard"
         className={({ isActive, isPending }) =>
           isPending
             ? "pending"
@@ -72,12 +72,27 @@ const Navbar = () => {
         </div>
         <div className="flex items-center gap-5 lg:gap-0">
           {user?.email ? (
-            <button
-              onClick={() => logout()}
-              className="px-5 btn btn-xs lg:btn-sm bg-[#BB8506] hover:bg-white  text-white hover:text-[#BB8506] border-0 border-b-4 border-white hover:border-[#BB8506] rounded-lg transition-colors duration-500 ease-in-out font-light outline-none"
-            >
-              Log Out
-            </button>
+            <>
+              {user.photoURL ? (
+                <img
+                  className="w-8 h-8 lg:w-12 lg:h-12 rounded-full"
+                  src={user?.photoURL}
+                  alt=""
+                />
+              ) : (
+                <img
+                  alt="tania andrew"
+                  src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1480&amp;q=80"
+                  className="inline-block h-12 w-12 cursor-pointer rounded-full object-cover object-center"
+                />
+              )}
+              <button
+                onClick={() => logout()}
+                className="px-5 btn btn-xs lg:btn-sm bg-[#BB8506] hover:bg-white  text-white hover:text-[#BB8506] border-0 border-b-4 border-white hover:border-[#BB8506] rounded-lg transition-colors duration-500 ease-in-out font-light outline-none"
+              >
+                Log Out
+              </button>
+            </>
           ) : (
             <Link to={"/login"}>
               <button className="px-5 btn btn-xs lg:btn-sm bg-[#BB8506] hover:bg-white  text-white hover:text-[#BB8506] border-0 border-b-4 border-white hover:border-[#BB8506] rounded-lg transition-colors duration-500 ease-in-out font-light outline-none">
